@@ -6,10 +6,9 @@
  * See https://github.com/tleunen/pixi-multistyle-text for more details
  */
 (function(){
-    var root = this;
-    var PIXI = root.PIXI;
 
-if(!PIXI) return;
+
+if(!PIXI) throw 'PIXI library not found';
 
 /**
  * A Multi-Style Text Object will create a line or multiple lines of text, using tags to specify different styles.
