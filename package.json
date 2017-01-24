@@ -1,5 +1,5 @@
 {
-  "name": "pixi-multistyle-text",
+  "name": "moovly-pixi-multistyle-text",
   "version": "0.5.2",
   "description": "Multi-Style Text for pixi.js",
   "main": "dist/pixi-multistyle-text.js",

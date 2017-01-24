@@ -7,54 +7,52 @@ Add a `MultiStyleText` object inside [pixi.js](https://github.com/GoodBoyDigital
 ## Example
 
 In the example below, we are defining 4 text styles.
-`def` is the default style for the text, and the others matches the tags inside the text.
+`default` is the default style for the text, and the others matches the tags inside the text.
 
 ```js
-var textSample = new PIXI.MultiStyleText("<pixi>Pixi.js</pixi> can has <multiline>multiline</multiline>\nand <multistyle>multi-styles</multistyle> text!",
-    {
-        def: { font: "35px Snippet", fill: "white" },
-        multiline: { font: "35px Snippet", fill: "blue" },
-        pixi: { font: "35px Snippet", fill: "#D90057" },
-        multistyle: { font: "35px Snippet", fill: "red" }
-    }
-);
+let text = new MultiStyleText("Let's make some <ml>multiline</ml>\nand <ms>multistyle</ms> text for\n<pixi>Pixi.js!</pixi>",
+{
+	"default": {
+		fontFamily: "Arial",
+		fontSize: "24px",
+		fill: "#cccccc",
+		align: "center"
+	},
+	"ml": {
+		fontStyle: "italic",
+		fill: "#ff8888"
+	},
+	"ms": {
+		fontStyle: "italic",
+		fill: "#4488ff"
+	},
+	"pixi": {
+		fontSize: "64px",
+		fill: "#efefef"
+	}
+});
 ```
 
 ## Usage
 
-### `text = new PIXI.MultiStyleText(text, textStyles [,lineStyle])`
+### `text = new MultiStyleText(text, textStyles)`
 
-Creates a new Multi-Styles Text with the given options
+Creates a new `MultiStyleText` with the given text and styles.
 
 #### `textStyles`
-Type: `[String:Object]`
+Type: `{ [key: string]: ExtendedTextStyle }`
 
-Each key of this dictionary should match with a tag in the text. Use the key `def` for the default style.
+Each key of this dictionary should match with a tag in the text. Use the key `default` for the default style.
 
-The style object can have these properties:
+Each `ExtendedTextStyle` object can have [any of the properties of a standard PIXI text style](http://pixijs.download/release/docs/PIXI.TextStyle.html), in addition to a `valign` property that allows you to specify where text is rendered relative to larger text on the same line (`"top"`, `"middle"`, or `"bottom"`).
 
-- `font` {string} The style and size of the font. Default bold 20pt Arial.
-- `fill` {object} A canvas fillstyle that will be used on the text. Can be a color, a gradient, or a pattern. Default black.
-- `stroke` {object} A canvas fillstyle that will be used on the text stroke. Can be a color, a gradient, or a pattern. Default black.
-- `strokeThickness` {number} A number that represents the thickness of the stroke. Default 0.
-- `dropShadow` {boolean} Set a drop shadow for the text. Default false.
-- `dropShadowColor` {object} A fill style to be used on the dropshadow. Can be a color, a gradient, or a pattern. Default black.
-- `dropShadowAngle` {number} Set a angle of the drop shadow. Default Math.PI/4.
-- `dropShadowDistance` {number} Set a distance of the drop shadow. Default 5.
-- `valign` {string} Vertical alignment for multi font-size text ('top', 'middle', 'bottom'). Default 'top'.
+The `align`, `wordWrap`, `wordWrapWidth`, and `breakWord` properties are ignored on all styles _except for the `default` style_, which controls those properties for the entire text object.
 
-#### `lineStyle`
-Type: `[Object]`
+If text is rendered without any value assigned to a given parameter, Pixi's defaults are used.
 
-- `align` {string} Alignment for multiline text ('left', 'center' or 'right'), does not affect single line text. Default left.
-- `wordWrap` {boolean} Indicates if word wrap should be used. Default false.
-- `wordWrapWidth` {Number} The width at which text will wrap. Default 100.
+## Demo
 
-## demo
-
-- Open `demo/index.html` in a browser and you should see something like this:
-
-![img](http://i.imgur.com/l3JLKQC.jpg)
+Open `demo/index.html` in a browser for several helpful examples.
 
 ## License
 

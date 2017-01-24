@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"target": "es5",
+		"module": "umd",
+		"moduleResolution": "node",
+		"removeComments": true,
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"outDir": "dist",
+		"declaration": true,
+		"pretty": true
+	},
+	"exclude": [
+		"node_modules",
+		"dist",
+		"bower_components"
+	],
+	"compileOnSave": false,
+	"baseUrl": "."
+}
